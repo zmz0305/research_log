@@ -97,8 +97,10 @@ PATCH request:
 - go run weav...
 - go get link.to.package to install missing libraries
 - doc at: https://weaviate.github.io/
+	- all not implemented...
 - github at: https://github.com/weaviate
 - official site: http://weaviate.com/
+- 
 
 ### replay 
 ##### from source code and postman
@@ -137,5 +139,7 @@ Segmentation fault (core dumped)
 - directly add ```IOTA_LOG_INFO("data: %s", data->bytes);``` before return will cause segfault, may because of missing '\0' ?
 	- Solved, data is NULL when request type is GET. Use local variable ```bytes``` instead.
 - ```cloud->providers->httpc->send_request(cloud->providers->httpc,&request, NULL);``` send_request is a interface? where to find which function is actually called?
+
+
 ##### Tcpreplay http://tcpreplay.synfin.net/
 
