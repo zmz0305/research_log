@@ -1,4 +1,6 @@
-### Often used commands
+### Often used stuff
+- under /libiota
+- make -j4
 - make -C examples/host/light
 - ./out/host/examples/light/light
 - ./weave_client account -l/-a ...
@@ -142,4 +144,63 @@ Segmentation fault (core dumped)
 
 
 ##### Tcpreplay http://tcpreplay.synfin.net/
+- simplest way ```tcpreplay --intf1=eth0 sample.pcap```
+
+#### ...
+```
+ 1695 find | grep -v .git | less 
+ 1696  find -type f | grep -v .git | less 
+ 1697  make clean
+ 1698  find -type f | grep -v .git | less 
+ 1699  find -type f | grep -v .git | less | wc -l
+ 1700  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less
+ 1701  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less
+ 1702  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less | sort -rn
+ 1703  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less | sort -rn | les
+ 1704  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less | sort -rn | less
+ 1705  find -type f | grep -v .git | grep cc$
+ 1706  find -type f | grep -v .git | grep cc$ | tail -1
+ 1707  emacs $(find -type f | grep -v .git | grep cc$ | tail -1)
+ 1708  find -type f | grep -v .git | grep -v googletest | grep cc$
+ 1709  find -type f | grep -v .git | grep -v googletest | grep -v test/ | grep cc$
+ 1710  find -type f | grep -v .git | grep -v googletest | grep cc$ | wc -l
+ 1711  ls
+ 1712  cd src/
+ 1713  ls -l
+ 1714  find -type f | wc -l
+ 1715  find -type f | less
+ 1716  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less | sort -rn | les
+ 1717  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less | sort -rn | less
+ 1718  find -type f | grep -v .git | less | rev | cut -f1 -d. | rev | less | sort | uniq -c | less | sort -rn
+ 1719  cd ..
+ 1720  find -name "*cpp"
+ 1721  find -name "*cpp" -type f
+ 1722  ls -ld $(find -name "*cpp")
+ 1723  ls -l $(find -name "*cpp")
+ 1724  ls
+ 1725  git status test
+ 1726  find -name googletset
+ 1727  find -name googletest
+ 1728  git status third_party/
+ 1729  git status third_party/googletest/
+ 1730  git status .
+ 1731  emacs .gitignore 
+ 1732  git log third_party/googletest/ | less
+ 1733  ls third_party/
+ 1734  less third_party/jsmn/README.md 
+ 1735  git diff
+ 1736  cd src/
+ 1737  find -name "*.c" | xargs grep send_request | less
+ 1738  find -name "*.h" | xargs grep send_request | less
+ 1739  find -type f | xargs grep send_request | less
+ 1740  find -type f | xargs grep -C3 send_request | less
+ 1741  pwd
+ 1742  cd ..
+ 1743  find -type f | xargs grep -C3 send_request | less
+ 1744  cd platform/host/
+ 1745  find -type f | xargs grep -C3 send_request | less
+
+```
+
+
 
