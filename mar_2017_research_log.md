@@ -5,7 +5,8 @@
   - Parameter does say it is a "Base IotaInterface* version of the get_trait_count method". Why do we need this version of method?
 - It seems that device type is determined by manifest_id. And only provided set of manifest_id can be registered.
   - When an invalid manifest_id is provided, there will be some error message and a segfault.
-  - ```
+  -
+```
 [(0000000.000)I dev_framework.c:532] Starting lock example.
 [(0000000.000)I dev_framework.c:535] Heap state at app_start: free=0, iota_allocated=0, iota_max_allocated=0
 [(0000000.000)I dev_framework.c:492] Heap state at dev_framework_init: free=0, iota_allocated=0, iota_max_allocated=0
