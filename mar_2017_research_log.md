@@ -77,7 +77,7 @@ struct GoogLight_ {
 - device related files (3 sets and one main.c)
   - examples/common/devices/smartlock.*
   - examples/common/devices/smartlock_traits.*
-  - examples/common/devices/host/lock/*
+  - examples/host/lock/*
   - src/schema/interfaces/goog_smartlock.c
     - In ```GoogSmartLock* GoogSmartLock_create(uint32_t optional_components) ``` everyone has power_switch.
   - include/iota/schema/interfaces/goog_smartlock.h
