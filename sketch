@@ -1,0 +1,19 @@
+./src/cloud/weave_state_machine.c:99, bool iota_weave_cloud_should_update_device_state(IotaWeaveCloud* cloud) 
+
+./platform/host/daemon.c:300, execute loop, call curl_iota_httpc_execute() in platform/host/curl_httpc.c
+
+segfault between platform/host/curl_httpc.c 474, 509 while loop. 
+
+complete_request_() around 510., 
+
+segfault at line 205. request->final_callback(); what is callback.
+
+callback could be set in weave_http.c, in a set of functions like iota_weave_cloud_send_get_with_oauth_*
+
+weave.c:408
+
+not in patch_device_state_callback_
+
+not in get_command_queue_callback_, this function only runs when there is a command in queue being fetched.
+
+in patch_command_state_callback_(), line403, iota_weave_local_command_state_set_sync_complete()
