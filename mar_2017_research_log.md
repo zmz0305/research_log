@@ -44,9 +44,9 @@ Fatal Error in tcpreplay.c:post_args() line 455:
 ~/workspace/research/iot_stuff/libiota > $ (master) sudo tcpreplay -intf1=lo ../wireshark_data/one_request_to_fcm_google.pcapng
 
 Fatal Error in tcpreplay.c:post_args() line 455:
- Invalid interface name/alias: ntf1=lo```
  Invalid interface name/alias: ntf1=lo
-
+ Invalid interface name/alias: ntf1=lo
+```
 
 correction: it's -i wlp3s0 or --ntf1=wlp3s0
 
