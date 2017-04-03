@@ -28,6 +28,7 @@
 
 #include "iota/schema/traits/goog_on_off.h"
 #include "iota/schema/traits/goog_lock.h"
+#include "iota/schema/traits/goog_temp_units_setting.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,6 +42,7 @@ typedef struct GoogSmartLock_ GoogSmartLock;
 #define GoogLock_WITHOUT_OPTIONAL_COMPONENTS 0
 #define GoogLock_WITH_LOCK (1 << 0)
 #define GoogLock_WITH_ALARM (1 << 1)
+#define GoogLock_WITH_TEMPUNITSETTING (1 << 2)
 #define GoogLock_WITH_ALL_COMPONENTS (~0)
 
 /**
@@ -95,7 +97,7 @@ GoogOnOff* GoogSmartLock_get_power_switch(GoogSmartLock *self);
 
 GoogLock* GoogSmartLock_get_lock(GoogSmartLock *self);
 
-
+GoogTempUnitsSetting* GoogSmartLock_get_temp_units_setting(GoogSmartLock *self);
 #ifdef __cplusplus
 }
 #endif

@@ -17,14 +17,14 @@
 [(0000000.000)E main.c:31] Device create from interface failed
 Segmentation fault (core dumped)
 ```
-  - ```manifest_id```'s first two character must match ```someDevice_DeviceKindCode```.
-  - If hack ```kGoogLock_DeviceKindCode``` in goog_smartlock.c together with manifest_id, there will be error when register. Confirmed.
+  - ```manifest_id```'s first two character must match ```someDevice_DeviceKindCode```. (goog_smartlock.c:47)
+  - If hack ```kGoogLock_DeviceKindCode``` in goog_smartlock.c together with manifest_id, there will be error when register. Confirmed. https://developers.google.com/weave/guides/compatibility-definition-document#devicekind
   - However, we can still add more traits into those preset device types.
   - One problem: cannot run command for newly added lock traits.
 - Cannot register device after deleting the device for iota cloud console. Status shows 1005, which is kIotaStatusRegistrationExists in code.
   - Related code at: ```src/cloud/weave_register.c:242```.
   - SOLUTION: in daemon console, run iota-wipeout, then iota-register. Took forever to figure this out.
-
+- HOW TO ENABLE "RUN COMMAND" in cloud?
 
 ### Continue duplicate PATCH request test on libiota
 - segfault is not happending in the second ```cloud->providers->httpc->send_request(cloud->providers->httpc,&request, NULL);```, but after send_()
@@ -76,8 +76,11 @@ struct GoogLight_ {
 - ```IotaInterface``` contains basic informations and some basic interface function stubs
 - device related files (3 sets and one main.c)
   - examples/common/devices/smartlock.*
+    - device basic configurations
   - examples/common/devices/smartlock_traits.*
+    - functions for traits, including the actual functions to run after running command from cloud
   - examples/host/lock/*
+    - main.c
   - src/schema/interfaces/goog_smartlock.c
     - In ```GoogSmartLock* GoogSmartLock_create(uint32_t optional_components) ``` everyone has power_switch.
   - include/iota/schema/interfaces/goog_smartlock.h

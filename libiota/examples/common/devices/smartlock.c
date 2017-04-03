@@ -35,6 +35,14 @@ void example_lock_configure(GoogSmartLock* lock, IotaDaemon* daemon) {
     IOTA_MAP_SET_DEFAULT(GoogLock_get_state(lock_trait), locked_state,
                          GoogLock_LOCKED_STATE_LOCKED);
 
+    // Set default temp_unit_settings config if it exists
+    GoogTempUnitsSetting* temp_units_setting_trait =
+            GoogSmartLock_get_temp_units_setting(lock);
+    GoogTempUnitsSetting_set_callbacks(
+            temp_units_setting_trait, daemon,
+            (GoogTempUnitsSetting_Handlers){.set_config = &lock_temp_units_setting_setconfig});
+    IOTA_MAP_SET_DEFAULT(GoogTempUnitsSetting_get_state(temp_units_setting_trait), units,
+                        GoogTempUnitsSetting_TEMPERATURE_UNITS_CELSIUS);
 }
 
 static void example_set_power_switch_callback_(void* context) {

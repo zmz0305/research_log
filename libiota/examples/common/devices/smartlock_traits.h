@@ -22,10 +22,21 @@ IotaTraitCallbackStatus lock_lock_trait_setconfig(
         GoogLock_SetConfig_Response* response,
         void* user_data);
 
+
+IotaTraitCallbackStatus lock_temp_units_setting_setconfig(
+        GoogTempUnitsSetting* self,
+        GoogTempUnitsSetting_SetConfig_Params* params,
+        GoogTempUnitsSetting_SetConfig_Response* response,
+        void* user_data);
+
 void lock_on_off_trait_set_state(GoogOnOff* on_off,
                                   GoogOnOff_OnOffState on_off_state);
 
 void lock_lock_trait_set_state(GoogLock* lock, GoogLock_LockedState locked_state);
+
+void lock_temp_units_setting_set_state(
+        GoogTempUnitsSetting* temp_units_setting,
+        GoogTempUnitsSetting_TemperatureUnits temperature_units);
 
 #ifdef __cplusplus
 }
