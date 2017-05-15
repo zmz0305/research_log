@@ -1,0 +1,662 @@
+{
+  "schemas": {
+    "ProvisionDeviceResponse": {
+      "description": "Response message for WeaveCompanionService.ProvisionDevice.",
+      "type": "object",
+      "properties": {
+        "expireTime": {
+          "description": "The expire time for the device ID to be claimed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "The resource name of the device to be claimed by a device."
+        },
+        "provisionId": {
+          "description": "The provision id to be passed to a device.",
+          "type": "string"
+        }
+      },
+      "id": "ProvisionDeviceResponse"
+    },
+    "ProvisionDeviceRequest": {
+      "description": "Request message for WeaveCompanionService.ProvisionDevice.",
+      "type": "object",
+      "properties": {
+        "modelManifestId": {
+          "type": "string",
+          "description": "Model manifest ID of the device to be claimed."
+        }
+      },
+      "id": "ProvisionDeviceRequest"
+    },
+    "UpdateDeviceRequest": {
+      "description": "Request message for WeaveCompanionService.UpdateDevice.",
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "Device",
+          "description": "The device to update."
+        },
+        "updateMask": {
+          "description": "Field mask relative to device message.\n\nThe following fields may be specified.\n* `display_name`\n* `description`",
+          "format": "google-fieldmask",
+          "type": "string"
+        }
+      },
+      "id": "UpdateDeviceRequest"
+    },
+    "ListCommandsResponse": {
+      "description": "Response message for WeaveCompanionService.ListCommands.",
+      "type": "object",
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "Command"
+          },
+          "description": "The list of commands."
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.",
+          "type": "string"
+        }
+      },
+      "id": "ListCommandsResponse"
+    },
+    "Command": {
+      "description": "Command information.",
+      "type": "object",
+      "properties": {
+        "expireTime": {
+          "description": "Expiration time.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "UNKNOWN_COMMAND_STATE",
+            "QUEUED",
+            "ABORTED",
+            "COMPLETED",
+            "EXPIRED"
+          ],
+          "description": "Command state.\n@OutputOnly",
+          "type": "string",
+          "enumDescriptions": [
+            "Unknown command state.",
+            "Command has been submitted.",
+            "Execution of the command was aborted by the device and cannot continue.",
+            "Command execution was successfully completed and all command results have\nbeen provided by the device.",
+            "Device did not complete or abort the command before the expiration\ntime-limit."
+          ]
+        },
+        "name": {
+          "description": "The resource name of the command. Command names have the form\n`devices/{device_id}/commands/{command_id}`.\n@OutputOnly",
+          "type": "string"
+        },
+        "commandName": {
+          "description": "Full command name including component and trait.",
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Parameters object of the command.  It's set by clients.  It can be empty."
+        },
+        "results": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Results object of the command.  It's set by devices when the command is\ncompleted successfully. It can be empty.\n@OutputOnly",
+          "type": "object"
+        },
+        "lastUpdateTime": {
+          "description": "Latest command update time.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "error": {
+          "$ref": "ErrorData",
+          "description": "Command error.  It's set by devices when the command is aborted.\n@OutputOnly"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "Creation time.\n@OutputOnly",
+          "format": "google-datetime"
+        }
+      },
+      "id": "Command"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    },
+    "Device": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "description": "Create time.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "firmwareVersion": {
+          "type": "string",
+          "description": "Firmware version of the device.\n@OutputOnly"
+        },
+        "connectionStatus": {
+          "type": "string",
+          "enumDescriptions": [
+            "Connection status unspecified.",
+            "Online status.",
+            "Offline status."
+          ],
+          "enum": [
+            "CONNECTION_STATUS_UNSPECIFIED",
+            "ONLINE",
+            "OFFLINE"
+          ],
+          "description": "The connection status for a device.\n@OutputOnly"
+        },
+        "nicknames": {
+          "description": "Nicknames of the device.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lastUpdateTime": {
+          "description": "Last update time.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "traits": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Traits that the device model components use.\n@OutputOnly\n    {\n      \"onOff\": {\n        \"commands\": {\n          \"setConfig\": {\n            \"parameters\": {\n              \"state\": {\n                \"type\": \"string\",\n                \"enum\": [ \"on\", \"off\" ]\n              }\n            }\n          }\n        },\n        \"state\": {\n          \"state\": {\n            \"isRequired\": true,\n            \"type\": \"string\",\n            \"enum\": [ \"on\", \"off\" ]\n          }\n        }\n      },\n      \"brightness\": {\n        ...\n      }\n    }"
+        },
+        "lastSeenTime": {
+          "description": "Last seen time.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the device."
+        },
+        "state": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Components state of the device.  As an example, the state of a simple light\ndevice looks like this.\n    {\n      \"powerSwitch\": {\n        \"state\": {\n          \"onOff\": {\n            \"state\": \"on\"\n          }\n        }\n      },\n      \"dimmer\": {\n        ...\n      }\n    }\n@OutputOnly",
+          "type": "object"
+        },
+        "name": {
+          "description": "The resource name of the device. Device names have the form\n`devices/{device_id}`.\n@OutputOnly",
+          "type": "string"
+        },
+        "modelName": {
+          "description": "Device model name.\n@OutputOnly",
+          "type": "string"
+        },
+        "deviceKind": {
+          "type": "string",
+          "enumDescriptions": [
+            "Unknown device kind.",
+            "Air Conditioner.",
+            "Light.",
+            "Outlet.",
+            "Switch.",
+            "TV."
+          ],
+          "enum": [
+            "UNKNOWN_DEVICE_KIND",
+            "AC_HEATING",
+            "LIGHT",
+            "OUTLET",
+            "SWITCH",
+            "TV"
+          ],
+          "description": "Device kind.\n@OutputOnly"
+        },
+        "modelManifestId": {
+          "description": "Model manifest ID of the device.\n@OutputOnly",
+          "type": "string"
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Components of the device model.\n    {\n      \"powerSwitch\": {\n        \"traits\": [\n          {\"trait\": \"onOff\"}\n        ]\n      },\n      \"dimmer\": {\n        \"traits\": [\n          {\"trait\": \"brightness\"}\n        ]\n      }\n    }\n@OutputOnly"
+        },
+        "interfaceVersion": {
+          "description": "Interface version of the device.\n@OutputOnly",
+          "type": "string"
+        },
+        "lastUseTime": {
+          "type": "string",
+          "description": "Last use time.\n@OutputOnly",
+          "format": "google-datetime"
+        },
+        "serialNumber": {
+          "description": "Serial number of the the device.\n@OutputOnly",
+          "type": "string"
+        },
+        "oemName": {
+          "type": "string",
+          "description": "Name of device model manufacturer.\n@OutputOnly"
+        },
+        "displayName": {
+          "description": "Display name of the device.",
+          "type": "string"
+        }
+      },
+      "id": "Device",
+      "description": "Next ID: 21\nDevice information."
+    },
+    "ErrorData": {
+      "description": "Details about an error.",
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "description": "User-visible error message format in English. Error translations should\nbe provided in the model manifests.",
+          "type": "string"
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Keyed error arguments used for error message formatting."
+        },
+        "errorCode": {
+          "description": "Status code indicating the type of error that occurred. This can\nbe one of the standard set of codes, or a vendor-specific code.",
+          "type": "string"
+        }
+      },
+      "id": "ErrorData"
+    },
+    "ListDevicesResponse": {
+      "description": "Response message for WeaveCompanionService.ListDevices.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.",
+          "type": "string"
+        },
+        "devices": {
+          "description": "The list of devices.",
+          "type": "array",
+          "items": {
+            "$ref": "Device"
+          }
+        }
+      },
+      "id": "ListDevicesResponse"
+    }
+  },
+  "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "canonicalName": "Weave Companion",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/weave.app": {
+          "description": "Access and manage your authorized Weave devices"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://weavecompanion.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "weavecompanion",
+  "batchPath": "batch",
+  "title": "Weave Companion API",
+  "ownerName": "Google",
+  "resources": {
+    "devices": {
+      "methods": {
+        "delete": {
+          "description": "Deletes a device.",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "DELETE",
+          "scopes": [
+            "https://www.googleapis.com/auth/weave.app"
+          ],
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^devices/[^/]+$",
+              "location": "path",
+              "description": "The name of the device to delete."
+            }
+          },
+          "flatPath": "v1/devices/{devicesId}",
+          "path": "v1/{+name}",
+          "id": "weavecompanion.devices.delete"
+        },
+        "get": {
+          "description": "Gets a device.",
+          "response": {
+            "$ref": "Device"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/weave.app"
+          ],
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^devices/[^/]+$",
+              "location": "path",
+              "description": "The resource name of the device."
+            }
+          },
+          "flatPath": "v1/devices/{devicesId}",
+          "path": "v1/{+name}",
+          "id": "weavecompanion.devices.get"
+        },
+        "list": {
+          "response": {
+            "$ref": "ListDevicesResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "pageToken": {
+              "location": "query",
+              "description": "A token identifying a page of results the server should return.",
+              "type": "string"
+            },
+            "pageSize": {
+              "location": "query",
+              "description": "Requested page size. Server may return fewer devices than requested.  If\nunspecified, server will pick an appropriate default.",
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/weave.app"
+          ],
+          "flatPath": "v1/devices",
+          "path": "v1/devices",
+          "id": "weavecompanion.devices.list",
+          "description": "Lists devices."
+        },
+        "patch": {
+          "description": "Updates a device.  Not all fields of the device are not updateable.",
+          "request": {
+            "$ref": "UpdateDeviceRequest"
+          },
+          "response": {
+            "$ref": "Device"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "PATCH",
+          "scopes": [
+            "https://www.googleapis.com/auth/weave.app"
+          ],
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^devices/[^/]+$",
+              "location": "path",
+              "description": "The resource name of the device. Device names have the form\n`devices/{device_id}`.\n@OutputOnly"
+            }
+          },
+          "flatPath": "v1/devices/{devicesId}",
+          "path": "v1/{+name}",
+          "id": "weavecompanion.devices.patch"
+        },
+        "provision": {
+          "response": {
+            "$ref": "ProvisionDeviceResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "scopes": [
+            "https://www.googleapis.com/auth/weave.app"
+          ],
+          "flatPath": "v1/devices:provision",
+          "path": "v1/devices:provision",
+          "id": "weavecompanion.devices.provision",
+          "request": {
+            "$ref": "ProvisionDeviceRequest"
+          },
+          "description": "Provision a device. It returns a device ID and its expire time. The client\nneeds to pass the device ID to a device using a local connection, and the\ndevice should claim the ID. If the ID is not claimed within the expire\ntime, the ID will be removed."
+        }
+      },
+      "resources": {
+        "commands": {
+          "methods": {
+            "get": {
+              "description": "Gets a command.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "Command"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/weave.app"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The name of the command to retrieve.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^devices/[^/]+/commands/[^/]+$"
+                }
+              },
+              "flatPath": "v1/devices/{devicesId}/commands/{commandsId}",
+              "id": "weavecompanion.devices.commands.get",
+              "path": "v1/{+name}"
+            },
+            "list": {
+              "flatPath": "v1/devices/{devicesId}/commands",
+              "path": "v1/{+device}/commands",
+              "id": "weavecompanion.devices.commands.list",
+              "description": "Lists commands.",
+              "response": {
+                "$ref": "ListCommandsResponse"
+              },
+              "parameterOrder": [
+                "device"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "device": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^devices/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the device to list commands for."
+                },
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A token identifying a page of results the server should return."
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Requested page size. Server may return fewer commands than requested.\nIf unspecified, server will pick an appropriate default.",
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/weave.app"
+              ]
+            },
+            "create": {
+              "flatPath": "v1/devices/{devicesId}/commands",
+              "path": "v1/{+device}/commands",
+              "id": "weavecompanion.devices.commands.create",
+              "request": {
+                "$ref": "Command"
+              },
+              "description": "Creates a command.",
+              "response": {
+                "$ref": "Command"
+              },
+              "parameterOrder": [
+                "device"
+              ],
+              "httpMethod": "POST",
+              "parameters": {
+                "device": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^devices/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the device to create the command."
+                },
+                "expireAfterTimeMs": {
+                  "location": "query",
+                  "description": "Optional time in milliseconds that the command is expired after.",
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/weave.app"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "alt": {
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ]
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://weavecompanion.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "The Weave Companion API lets users programmatically manage their Weave devices.",
+  "servicePath": "",
+  "basePath": "",
+  "id": "weavecompanion:v1",
+  "documentationLink": "https://developers.google.com/weave/guides/overview/what-is-weave",
+  "revision": "20170405",
+  "discoveryVersion": "v1",
+  "version_module": "True"
+}

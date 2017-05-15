@@ -1,0 +1,2606 @@
+Device Under Test : 
+{
+  "certFingerprint": "iDbX8AmTxL1JP7RL/zgKUAvKE1yjXgVhyDS34t+tsBM=", 
+  "kind": "weave#device", 
+  "name": "kandy", 
+  "channel": {
+    "supportedType": "pull"
+  }, 
+  "lastSeenTimeMs": "1481407201000", 
+  "deviceKind": "light", 
+  "personalizedInfo": {
+    "maxRole": "owner"
+  }, 
+  "traits": {
+    "colorXy": {
+      "commands": {
+        "setConfig": {
+          "parameters": {
+            "colorSetting": {
+              "additionalProperties": false, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object", 
+              "properties": {
+                "colorY": {
+                  "minimum": 0, 
+                  "type": "number", 
+                  "maximum": 1
+                }, 
+                "colorX": {
+                  "minimum": 0, 
+                  "type": "number", 
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        }
+      }, 
+      "state": {
+        "colorCapGreen": {
+          "additionalProperties": false, 
+          "isRequired": true, 
+          "required": [
+            "colorX", 
+            "colorY"
+          ], 
+          "type": "object", 
+          "properties": {
+            "colorY": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }, 
+            "colorX": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }
+          }
+        }, 
+        "colorCapBlue": {
+          "additionalProperties": false, 
+          "isRequired": true, 
+          "required": [
+            "colorX", 
+            "colorY"
+          ], 
+          "type": "object", 
+          "properties": {
+            "colorY": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }, 
+            "colorX": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }
+          }
+        }, 
+        "colorSetting": {
+          "additionalProperties": false, 
+          "isRequired": true, 
+          "required": [
+            "colorX", 
+            "colorY"
+          ], 
+          "type": "object", 
+          "properties": {
+            "colorY": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }, 
+            "colorX": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }
+          }
+        }, 
+        "colorCapRed": {
+          "additionalProperties": false, 
+          "isRequired": true, 
+          "required": [
+            "colorX", 
+            "colorY"
+          ], 
+          "type": "object", 
+          "properties": {
+            "colorY": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }, 
+            "colorX": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }
+          }
+        }
+      }
+    }, 
+    "_accessControlBlackList": {
+      "commands": {
+        "unblock": {
+          "parameters": {
+            "userId": {
+              "type": "string"
+            }, 
+            "applicationId": {
+              "type": "string"
+            }
+          }, 
+          "minimalRole": "owner"
+        }, 
+        "list": {
+          "results": {
+            "blackList": {
+              "items": {
+                "additionalProperties": false, 
+                "type": "object", 
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  }, 
+                  "applicationId": {
+                    "type": "string"
+                  }
+                }
+              }, 
+              "type": "array"
+            }
+          }, 
+          "minimalRole": "owner"
+        }, 
+        "block": {
+          "parameters": {
+            "userId": {
+              "type": "string"
+            }, 
+            "expirationTimeoutSec": {
+              "type": "integer"
+            }, 
+            "applicationId": {
+              "type": "string"
+            }
+          }, 
+          "minimalRole": "owner"
+        }
+      }, 
+      "state": {
+        "capacity": {
+          "isRequired": true, 
+          "type": "integer"
+        }, 
+        "size": {
+          "isRequired": true, 
+          "type": "integer"
+        }
+      }
+    }, 
+    "base": {
+      "commands": {
+        "updateDeviceInfo": {
+          "parameters": {
+            "description": {
+              "type": "string"
+            }, 
+            "name": {
+              "type": "string"
+            }, 
+            "location": {
+              "type": "string"
+            }
+          }, 
+          "minimalRole": "manager"
+        }, 
+        "identify": {}, 
+        "reboot": {}, 
+        "updateBaseConfiguration": {
+          "parameters": {
+            "localPairingEnabled": {
+              "type": "boolean"
+            }, 
+            "localAnonymousAccessMaxRole": {
+              "enum": [
+                "none", 
+                "viewer", 
+                "user"
+              ], 
+              "type": "string"
+            }, 
+            "localDiscoveryEnabled": {
+              "type": "boolean"
+            }
+          }, 
+          "minimalRole": "manager"
+        }
+      }, 
+      "state": {
+        "localPairingEnabled": {
+          "isRequired": true, 
+          "type": "boolean"
+        }, 
+        "network": {
+          "additionalProperties": false, 
+          "type": "object", 
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          }
+        }, 
+        "localDiscoveryEnabled": {
+          "isRequired": true, 
+          "type": "boolean"
+        }, 
+        "connectionStatus": {
+          "type": "string"
+        }, 
+        "localAnonymousAccessMaxRole": {
+          "isRequired": true, 
+          "enum": [
+            "none", 
+            "viewer", 
+            "user"
+          ], 
+          "type": "string"
+        }, 
+        "firmwareVersion": {
+          "isRequired": true, 
+          "type": "string"
+        }
+      }
+    }, 
+    "onOff": {
+      "commands": {
+        "setConfig": {
+          "parameters": {
+            "state": {
+              "enum": [
+                "on", 
+                "off"
+              ], 
+              "type": "string"
+            }
+          }
+        }
+      }, 
+      "state": {
+        "state": {
+          "isRequired": true, 
+          "enum": [
+            "on", 
+            "off"
+          ], 
+          "type": "string"
+        }
+      }
+    }, 
+    "brightness": {
+      "commands": {
+        "setConfig": {
+          "parameters": {
+            "brightness": {
+              "minimum": 0, 
+              "type": "number", 
+              "maximum": 1
+            }
+          }
+        }
+      }, 
+      "state": {
+        "brightness": {
+          "isRequired": true, 
+          "minimum": 0, 
+          "type": "number", 
+          "maximum": 1
+        }
+      }
+    }
+  }, 
+  "deviceLocalId": "25EDECAB-4C3D-4F93-9578-5E36BEAAD8F7", 
+  "state": {}, 
+  "modelManifestId": "AIAAA", 
+  "connectionStatus": "unknown", 
+  "components": {
+    "accessControl": {
+      "traits": [
+        "_accessControlBlackList"
+      ], 
+      "state": {
+        "_accessControlBlackList": {
+          "capacity": 1024, 
+          "size": 0
+        }
+      }
+    }, 
+    "light": {
+      "traits": [
+        "onOff", 
+        "brightness", 
+        "colorXy"
+      ], 
+      "state": {
+        "colorXy": {
+          "colorCapGreen": {
+            "colorY": 0.517, 
+            "colorX": 0.408
+          }, 
+          "colorCapBlue": {
+            "colorY": 0.041, 
+            "colorX": 0.168
+          }, 
+          "colorSetting": {
+            "colorY": 0, 
+            "colorX": 0
+          }, 
+          "colorCapRed": {
+            "colorY": 0.322, 
+            "colorX": 0.674
+          }
+        }, 
+        "onOff": {
+          "state": "off"
+        }, 
+        "brightness": {
+          "brightness": 0
+        }
+      }
+    }, 
+    "base": {
+      "traits": [
+        "base"
+      ], 
+      "state": {
+        "base": {
+          "localPairingEnabled": true, 
+          "localAnonymousAccessMaxRole": "viewer", 
+          "localDiscoveryEnabled": true, 
+          "firmwareVersion": "Linux"
+        }
+      }
+    }
+  }, 
+  "owner": "vimuth@gmail.com", 
+  "modelManifest": {
+    "modelName": "Unregistered Model", 
+    "oemName": "Unregistered Manufacturer"
+  }, 
+  "creationTimeMs": "1481407198404", 
+  "lastUpdateTimeMs": "1481407199983", 
+  "id": "b00d3501-7c58-3349-9452-032c2317ad1d", 
+  "uiDeviceKind": "light"
+}
+Failing Sequences : 
+[
+  [
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410735541", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407135541", 
+        "lastUpdateTimeMs": "1481407135541", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc26dc76795c-2859-a9be-da96-139cdc5a350c"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410745713", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407145713", 
+        "lastUpdateTimeMs": "1481407145713", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc2695d459e6-fdbe-05cb-97fd-ce02f54a062d"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410755878", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407155878", 
+        "lastUpdateTimeMs": "1481407155878", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc26387e1c39-2d24-6143-cd58-3ce9ea8f8736"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.7020546444900242, 
+            "colorX": 0.16861959929369608
+          }
+        }, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.7020546444900242, 
+            "colorX": 0.16861959929369608
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410766047", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407166047", 
+        "lastUpdateTimeMs": "1481407166047", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc26d512622f-df7c-ad91-eda7-acde3ceae1c0"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410776233", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407176233", 
+        "lastUpdateTimeMs": "1481407176233", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc266bd8457f-a33b-d9dd-01c1-37b37780620b"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.6557159532307183
+        }, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.6557159532307183
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410786436", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407186436", 
+        "lastUpdateTimeMs": "1481407186436", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc263e5a9629-9480-d4b1-2349-d6f8820bcfee"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.6557159532307183
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410786436", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407186436", 
+        "lastUpdateTimeMs": "1481407186436", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc263e5a9629-9480-d4b1-2349-d6f8820bcfee"
+      }
+    ]
+  ], 
+  [
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.612411361444492, 
+            "colorX": 0.8568067196220239
+          }
+        }, 
+        "deviceId": "b00d3501-7c58-3349-9452-032c2317ad1d"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.6557159532307183
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410786436", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "f8195d9b-2b56-1eaa-88e4-ee893afccc26", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407186436", 
+        "lastUpdateTimeMs": "1481407186436", 
+        "id": "f8195d9b-2b56-1eaa-88e4-ee893afccc263e5a9629-9480-d4b1-2349-d6f8820bcfee"
+      }
+    ]
+  ]
+]
+Passing Sequences : 
+[
+  [
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.3634939967093581
+        }, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.3634939967093581
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481409874949", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406274949", 
+        "lastUpdateTimeMs": "1481406274949", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510ad045b1dd9-0ac5-6289-69f3-56c71601eb21"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481409885110", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406285110", 
+        "lastUpdateTimeMs": "1481406285110", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510adb64e7ea9-f962-93fc-bd50-52d5085c19e7"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.904695519156416
+        }, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.904695519156416
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481409895282", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406295282", 
+        "lastUpdateTimeMs": "1481406295282", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510ad3cdc3145-e367-c2be-5609-6d8a31941cf0"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5368490880325938
+        }, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5368490880325938
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481409905611", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406305611", 
+        "lastUpdateTimeMs": "1481406305611", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510ad72f1eeb4-44aa-b92e-f202-4a13801188ad"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481409915793", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406315793", 
+        "lastUpdateTimeMs": "1481406315793", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510adde2198d0-a7cd-0e41-287e-141cbbf2b924"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481409926070", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406326070", 
+        "lastUpdateTimeMs": "1481406326070", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510adb24c1ff0-7bb6-9da6-bd46-5044364cc0b2"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481409936274", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406336274", 
+        "lastUpdateTimeMs": "1481406336274", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510ad146970e4-11e2-05ec-e771-98c1b9c44fbc"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481409946435", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406346435", 
+        "lastUpdateTimeMs": "1481406346435", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510addb68c59f-9abe-6d4b-018e-244aff4f33d5"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481409956603", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406356603", 
+        "lastUpdateTimeMs": "1481406356603", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510ad2511fac2-dc6e-3aba-650a-876c8092c1a7"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.04588867353560566, 
+            "colorX": 0.6474502129463202
+          }
+        }, 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.04588867353560566, 
+            "colorX": 0.6474502129463202
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481409966805", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "e85e3018-7b98-fa6f-2620-264c605510ad", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406366805", 
+        "lastUpdateTimeMs": "1481406366805", 
+        "id": "e85e3018-7b98-fa6f-2620-264c605510adbaa2c323-83ea-becd-1200-019ccba7f423"
+      }
+    ]
+  ], 
+  [
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481409982283", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406382283", 
+        "lastUpdateTimeMs": "1481406382283", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95a6f8c1093-ef79-9910-b671-fe3e5555455a"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481409992456", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406392456", 
+        "lastUpdateTimeMs": "1481406392456", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95af388d5af-2e6c-9488-0552-ae92a8511b7b"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.2551004751960877
+        }, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.2551004751960877
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410002604", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406402604", 
+        "lastUpdateTimeMs": "1481406402604", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95a3410df48-3804-06f1-d246-91c1fd80b22c"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410012780", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406412780", 
+        "lastUpdateTimeMs": "1481406412780", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95a7352d824-867f-a5e7-21e0-881a238361dc"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410022944", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406422944", 
+        "lastUpdateTimeMs": "1481406422944", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95a2759bce3-b1e0-529a-0110-f9e286b189e1"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410033130", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406433130", 
+        "lastUpdateTimeMs": "1481406433130", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95acd11dae1-5f0e-fbef-22e0-091586ef87a5"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.9194004204834918, 
+            "colorX": 0.054919812393277145
+          }
+        }, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.9194004204834918, 
+            "colorX": 0.054919812393277145
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410043299", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406443299", 
+        "lastUpdateTimeMs": "1481406443299", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95a48bbb75a-97a6-bd93-d65b-fe963a117c7a"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410053464", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406453464", 
+        "lastUpdateTimeMs": "1481406453464", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95acff120ed-dc61-1def-5bdb-d9288d2b224c"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5884534111987905
+        }, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5884534111987905
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410063626", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406463626", 
+        "lastUpdateTimeMs": "1481406463626", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95ab77150a7-7a53-94fd-12aa-db22a7724021"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410073810", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "ad58936e-8866-5891-6700-f2d4691ad95a", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406473810", 
+        "lastUpdateTimeMs": "1481406473810", 
+        "id": "ad58936e-8866-5891-6700-f2d4691ad95a59f0c3ed-c127-3698-e121-60d22fb25faa"
+      }
+    ]
+  ], 
+  [
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410089322", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406489322", 
+        "lastUpdateTimeMs": "1481406489322", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df9dee2b95-3d2d-d05b-af9e-cd090a2da81e"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.6204408943926555
+        }, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.6204408943926555
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410099490", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406499490", 
+        "lastUpdateTimeMs": "1481406499490", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df8d7f1f5b-7e61-33fa-4448-be07b04ac042"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.9250576806428317, 
+            "colorX": 0.6968328592652905
+          }
+        }, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.9250576806428317, 
+            "colorX": 0.6968328592652905
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410109658", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406509658", 
+        "lastUpdateTimeMs": "1481406509658", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df124732b7-4dca-e2e3-7f8e-9a2f5937bed6"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410119799", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406519799", 
+        "lastUpdateTimeMs": "1481406519799", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df7a08fafd-833a-d6d9-0fa2-b8bffb887ce3"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410129957", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406529957", 
+        "lastUpdateTimeMs": "1481406529957", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df83e294ca-8fbe-777c-e9ed-33a8a9ccec47"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410140149", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406540149", 
+        "lastUpdateTimeMs": "1481406540149", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df5a7bf962-769a-c73a-54ff-adfc33150284"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410150327", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406550327", 
+        "lastUpdateTimeMs": "1481406550327", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99dfc4565ce6-4248-814b-8cba-fa48e9a86bab"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.8610321917822473
+        }, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.8610321917822473
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410160487", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406560487", 
+        "lastUpdateTimeMs": "1481406560487", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99dfa8e5f7ee-fa6f-0b3e-2ee8-d31bb17d7808"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410170656", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406570656", 
+        "lastUpdateTimeMs": "1481406570656", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df7e37cc2d-3f27-c307-be74-828600c79589"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.3097988784915049, 
+            "colorX": 0.7544681027560867
+          }
+        }, 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.3097988784915049, 
+            "colorX": 0.7544681027560867
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410180827", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "bceb8062-2682-aa54-a2b0-4400de1f99df", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406580827", 
+        "lastUpdateTimeMs": "1481406580827", 
+        "id": "bceb8062-2682-aa54-a2b0-4400de1f99df8c1c0644-fcb8-ad61-5bf1-84f7f3ae9eb1"
+      }
+    ]
+  ], 
+  [
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410196189", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406596189", 
+        "lastUpdateTimeMs": "1481406596189", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e03e018da-f58f-bbd9-fb0f-408f77825edc"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.6260027723297377, 
+            "colorX": 0.38446744895266016
+          }
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.6260027723297377, 
+            "colorX": 0.38446744895266016
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410206357", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406606357", 
+        "lastUpdateTimeMs": "1481406606357", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8ec30cc468-51cc-db28-b7bf-806315832256"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5903235706342508
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5903235706342508
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410216533", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406616533", 
+        "lastUpdateTimeMs": "1481406616533", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e251919fd-e49f-3606-5e14-07bc5e109366"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410226700", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406626700", 
+        "lastUpdateTimeMs": "1481406626700", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e7171c381-e932-f647-26c9-cc55671c699f"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410236886", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406636886", 
+        "lastUpdateTimeMs": "1481406636886", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8edfde5015-b18e-6f16-f222-05c9244e8c19"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.3208091010473376
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.3208091010473376
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410247068", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406647068", 
+        "lastUpdateTimeMs": "1481406647068", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8ea1f7bcac-0438-61b2-b4c7-2c3efd5f913b"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410257244", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406657244", 
+        "lastUpdateTimeMs": "1481406657244", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8ea118beca-a80f-569c-d589-1da42e789c10"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410267406", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406667406", 
+        "lastUpdateTimeMs": "1481406667406", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e0d57f272-b3f4-7feb-7365-924f6935abba"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410277574", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406677574", 
+        "lastUpdateTimeMs": "1481406677574", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e0f2b4c02-fbaa-ae24-a8dd-ad9c56d09bb5"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410287737", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406687737", 
+        "lastUpdateTimeMs": "1481406687737", 
+        "id": "a7e3b5af-284c-a82c-1380-29b4c6ec2c8e2dad61dc-3e8e-e692-ff62-9cd19e43305a"
+      }
+    ]
+  ], 
+  [
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410303101", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406703101", 
+        "lastUpdateTimeMs": "1481406703101", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f145cfcfad5-1a93-67f3-4529-feae6969848d"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410313306", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406713306", 
+        "lastUpdateTimeMs": "1481406713306", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f14fd51908b-fd2c-3257-1290-6fe7874b055f"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5341885679895298
+        }, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5341885679895298
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410323507", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406723507", 
+        "lastUpdateTimeMs": "1481406723507", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f14cd424d79-312c-962c-4f43-73e8deee23e4"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410333687", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406733687", 
+        "lastUpdateTimeMs": "1481406733687", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f143a269ada-a49f-0802-cde1-849d6aeb8010"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.536694527429172
+        }, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.536694527429172
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410343873", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406743873", 
+        "lastUpdateTimeMs": "1481406743873", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f1448930c06-626a-62bf-04d4-5da3c391ee04"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410354058", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406754058", 
+        "lastUpdateTimeMs": "1481406754058", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f14c56b9309-e74d-1d42-0214-e841a1f78b47"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410364242", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406764242", 
+        "lastUpdateTimeMs": "1481406764242", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f14e6639d13-717e-a906-75e3-5dea707340af"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410374425", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406774425", 
+        "lastUpdateTimeMs": "1481406774425", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f140d607583-44b5-c2cd-7efe-974a61aa5054"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410384621", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406784621", 
+        "lastUpdateTimeMs": "1481406784621", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f14c73525c8-6d15-4827-3f32-676fb5fe76e4"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410394814", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "6651c174-4985-631d-4f78-4a3eb6232f14", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406794814", 
+        "lastUpdateTimeMs": "1481406794814", 
+        "id": "6651c174-4985-631d-4f78-4a3eb6232f14d4db9d6c-3189-3aea-1911-12606d2f8978"
+      }
+    ]
+  ], 
+  [
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410414525", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406814525", 
+        "lastUpdateTimeMs": "1481406814525", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb287280888cece43-93cf-4929-7617-5e2e2bf596d4"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.12677135750539414
+        }, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.12677135750539414
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410424712", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406824712", 
+        "lastUpdateTimeMs": "1481406824712", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb287280859f0d3e9-778c-478a-fbf5-f56a03fe578d"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410434899", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406834899", 
+        "lastUpdateTimeMs": "1481406834899", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb287280810b69f57-7d6f-12e8-389c-aac896af9211"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410445076", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406845076", 
+        "lastUpdateTimeMs": "1481406845076", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb287280822e5ba3a-08eb-ee58-53ed-5b46e1735d40"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410455259", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406855259", 
+        "lastUpdateTimeMs": "1481406855259", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb2872808be7740cd-2eeb-284b-538d-08ba80005780"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410465441", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406865441", 
+        "lastUpdateTimeMs": "1481406865441", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb2872808b55cce46-dfbc-0c18-45f2-30dc8f6a8d25"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.26971706356103387
+        }, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.26971706356103387
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410475632", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406875632", 
+        "lastUpdateTimeMs": "1481406875632", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb2872808af0d5cee-ba72-4b6a-c486-c0cc34d5fb5b"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410485812", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406885812", 
+        "lastUpdateTimeMs": "1481406885812", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb2872808986f47a7-6e30-2bfe-411b-927657892096"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.5704927799437104, 
+            "colorX": 0.8391391361235364
+          }
+        }, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.5704927799437104, 
+            "colorX": 0.8391391361235364
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410495988", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406895988", 
+        "lastUpdateTimeMs": "1481406895988", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb2872808c15b36a7-eadd-430b-ca85-069a3d9d523f"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410506170", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "96c18beb-b9c0-06a2-4620-aeceb2872808", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406906170", 
+        "lastUpdateTimeMs": "1481406906170", 
+        "id": "96c18beb-b9c0-06a2-4620-aeceb2872808e87963de-6b93-df26-710b-e1d4478294cc"
+      }
+    ]
+  ], 
+  [
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.2413939483516343
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.2413939483516343
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410521545", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406921545", 
+        "lastUpdateTimeMs": "1481406921545", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d63e1d0105-e7c4-f087-910b-b46a2fe03a48"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410531703", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406931703", 
+        "lastUpdateTimeMs": "1481406931703", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d6c488ef19-eb18-53f7-e2df-5a8b08b2d92d"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5536647652756939
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5536647652756939
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410541864", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406941864", 
+        "lastUpdateTimeMs": "1481406941864", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d610ea929a-f392-2cc4-6f41-8e3912ae08d0"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "off"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410552031", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406952031", 
+        "lastUpdateTimeMs": "1481406952031", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d6704918b4-fbfd-c2f9-943e-69c94725aae4"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410562269", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406962269", 
+        "lastUpdateTimeMs": "1481406962269", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d6c380fbc3-d38b-edaa-1155-d9454eeee63f"
+      }
+    ], 
+    [
+      "onOff.setConfig", 
+      {
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "onOff.setConfig", 
+        "parameters": {
+          "state": "on"
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410572444", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406972444", 
+        "lastUpdateTimeMs": "1481406972444", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d6afcd7979-6b4d-1d28-94fc-372fb9cca5d5"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410582604", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406982604", 
+        "lastUpdateTimeMs": "1481406982604", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d61ac303b7-8dec-aa9b-5b95-53096d6fad51"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.46742685860561894
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.46742685860561894
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410592770", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481406992770", 
+        "lastUpdateTimeMs": "1481406992770", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d6432cb43b-34da-a7ee-36d9-fdda43e47ee3"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410602937", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407002937", 
+        "lastUpdateTimeMs": "1481407002937", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d6a244cf8f-ac24-c95c-90e7-27413642a418"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.8937976646793041, 
+            "colorX": 0.817703769739292
+          }
+        }, 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.8937976646793041, 
+            "colorX": 0.817703769739292
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410613110", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "40e48b23-305d-c055-0633-63d0f37845d6", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407013110", 
+        "lastUpdateTimeMs": "1481407013110", 
+        "id": "40e48b23-305d-c055-0633-63d0f37845d66d7477ba-80cc-31d4-54da-0aa81f807e71"
+      }
+    ]
+  ], 
+  [
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410628467", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407028467", 
+        "lastUpdateTimeMs": "1481407028467", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f03090104503b957dc63-f62b-efc4-cad9-acea05bc3fb4"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.335622100528996, 
+            "colorX": 0.8088878990369212
+          }
+        }, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.335622100528996, 
+            "colorX": 0.8088878990369212
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410638739", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407038739", 
+        "lastUpdateTimeMs": "1481407038739", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f03090104503cf7a5a8c-2f39-3d5f-16e8-3cd4cf0bc0f9"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.8868576115924013
+        }, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.8868576115924013
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410648916", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407048916", 
+        "lastUpdateTimeMs": "1481407048916", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f030901045037f0f2961-2e0c-c2ed-e60c-b8f73be4fd2c"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410659109", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407059109", 
+        "lastUpdateTimeMs": "1481407059109", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f030901045035167f6c7-d023-cc5d-99f1-95ea3ff0eeab"
+      }
+    ], 
+    [
+      "brightness.setConfig", 
+      {
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5969989799384535
+        }, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "brightness.setConfig", 
+        "parameters": {
+          "brightness": 0.5969989799384535
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410669294", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407069294", 
+        "lastUpdateTimeMs": "1481407069294", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f0309010450308202783-9ba2-8a57-a24b-de9c6019cd66"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.3568190703672043, 
+            "colorX": 0.5286199769898792
+          }
+        }, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.3568190703672043, 
+            "colorX": 0.5286199769898792
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410679463", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407079463", 
+        "lastUpdateTimeMs": "1481407079463", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f030901045039aa678a1-433e-a305-9fe7-885442558187"
+      }
+    ], 
+    [
+      "base.identify", 
+      {
+        "name": "base.identify", 
+        "parameters": {}, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.identify", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410689640", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407089640", 
+        "lastUpdateTimeMs": "1481407089640", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f0309010450362177a5a-a868-a25e-c028-9c86c7630bd4"
+      }
+    ], 
+    [
+      "colorXy.setConfig", 
+      {
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.14371808306916367, 
+            "colorX": 0.40490430726643156
+          }
+        }, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "colorXy.setConfig", 
+        "parameters": {
+          "colorSetting": {
+            "colorY": 0.14371808306916367, 
+            "colorX": 0.40490430726643156
+          }
+        }, 
+        "component": "light", 
+        "expirationTimeMs": "1481410699805", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407099805", 
+        "lastUpdateTimeMs": "1481407099805", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f03090104503dbc3a348-6e63-63a6-2fbc-9cea0185327e"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410709986", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407109986", 
+        "lastUpdateTimeMs": "1481407109986", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f030901045032abbe1d3-309f-8685-2de5-978bfce50651"
+      }
+    ], 
+    [
+      "base.reboot", 
+      {
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503"
+      }, 
+      {
+        "kind": "weave#command", 
+        "name": "base.reboot", 
+        "parameters": {}, 
+        "component": "base", 
+        "expirationTimeMs": "1481410720152", 
+        "state": "queued", 
+        "creatorEmail": "vimuth@gmail.com", 
+        "deviceId": "20b9fc27-cae6-cd48-fd1a-f03090104503", 
+        "expirationTimeoutMs": "3600000", 
+        "creationTimeMs": "1481407120152", 
+        "lastUpdateTimeMs": "1481407120152", 
+        "id": "20b9fc27-cae6-cd48-fd1a-f03090104503ed1a67de-ed50-71b8-79e8-0d182e20c3e3"
+      }
+    ]
+  ]
+]

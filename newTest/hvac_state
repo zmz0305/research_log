@@ -1,0 +1,99 @@
+
+{
+  "ambientAirHumidity": {
+    "state": {
+      "humiditySensor": {
+        "value": 0.5
+      }
+    }
+  }, 
+  "ambientAirTemperature": {
+    "state": {
+      "tempSensor": {
+        "degreesCelsius": 20
+      }
+    }
+  }, 
+  "coolSetting": {
+    "state": {
+      "tempSetting": {
+        "degreesCelsius": 20, 
+        "maximumDegreesCelsius": 32, 
+        "minimumDegreesCelsius": 9
+      }
+    }
+  }, 
+  "coolSubsystem": {
+    "state": {
+      "hvacSubsystemController": {
+        "controllerMode": "disabled", 
+        "subsystemState": "off", 
+        "supportsModeAlwaysOn": false, 
+        "supportsModeAuto": true, 
+        "supportsModeDisabled": true
+      }
+    }
+  }, 
+  "displayUnits": {
+    "state": {
+      "tempUnitsSetting": {
+        "units": "celsius"
+      }
+    }
+  }, 
+  "fanSubsystem": {
+    "state": {
+      "hvacSubsystemController": {
+        "controllerMode": "disabled", 
+        "subsystemState": "off", 
+        "supportsModeAlwaysOn": true, 
+        "supportsModeAuto": true, 
+        "supportsModeDisabled": false
+      }
+    }
+  }, 
+  "heatCoolSetting": {
+    "state": {
+      "tempRangeSetting": {
+        "highSetPointC": 25, 
+        "lowSetPointC": 15, 
+        "maximumHighSetPointC": 32, 
+        "maximumLowSetPointC": 32, 
+        "minimumDeltaC": 3, 
+        "minimumHighSetPointC": 9, 
+        "minimumLowSetPointC": 9
+      }
+    }
+  }, 
+  "heatCoolSubsystem": {
+    "state": {
+      "hvacSubsystemController": {
+        "controllerMode": "disabled", 
+        "subsystemState": "off", 
+        "supportsModeAlwaysOn": false, 
+        "supportsModeAuto": true, 
+        "supportsModeDisabled": true
+      }
+    }
+  }, 
+  "heatSetting": {
+    "state": {
+      "tempSetting": {
+        "degreesCelsius": 20, 
+        "maximumDegreesCelsius": 32, 
+        "minimumDegreesCelsius": 9
+      }
+    }
+  }, 
+  "heatSubsystem": {
+    "state": {
+      "hvacSubsystemController": {
+        "controllerMode": "disabled", 
+        "subsystemState": "off", 
+        "supportsModeAlwaysOn": false, 
+        "supportsModeAuto": true, 
+        "supportsModeDisabled": true
+      }
+    }
+  }
+}

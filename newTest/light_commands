@@ -1,0 +1,21 @@
+colorTemp/colorTemp.setConfig:
+{'parameters': {'colorTemp': {'type': 'integer'}}}
+
+colorXy/colorXy.setConfig:
+{'parameters': {'colorSetting': {'additionalProperties': False,
+                                 'properties': {'colorX': {'maximum': 1,
+                                                           'minimum': 0,
+                                                           'type': 'number'},
+                                                'colorY': {'maximum': 1,
+                                                           'minimum': 0,
+                                                           'type': 'number'}},
+                                 'required': ['colorX', 'colorY'],
+                                 'type': 'object'}}}
+
+dimmer/brightness.setConfig:
+{'parameters': {'brightness': {'maximum': 1,
+                               'minimum': 0,
+                               'type': 'number'}}}
+
+powerSwitch/onOff.setConfig:
+{'parameters': {'state': {'enum': ['on', 'off'], 'type': 'string'}}}

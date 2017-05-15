@@ -1,0 +1,1 @@
+INFO:googleapiclient.discovery:URL being requested: POST https://weavecompanion.googleapis.com/v1/devices:provision?alt=json

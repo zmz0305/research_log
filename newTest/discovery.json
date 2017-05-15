@@ -1,0 +1,1699 @@
+{
+  "kind": "discovery#restDescription",
+  "discoveryVersion": "v1",
+  "id": "weave:v1",
+  "name": "weave",
+  "canonicalName": "Weave",
+  "version": "v1",
+  "revision": "20140804",
+  "title": "Weave API",
+  "description": "Lets you register, view and manage cloud ready devices.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "documentationLink": "https://developers.google.com/weave/",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/auth/weave.app",
+  "basePath": "/v1/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "/weave/v1/",
+  "batchPath": "batch",
+  "parameters": {
+    "alt": {
+      "type": "string",
+      "description": "Data format for the response.",
+      "default": "json",
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "location": "query"
+    },
+    "fields": {
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query"
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+      "location": "query"
+    },
+    "userIp": {
+      "type": "string",
+      "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+      "location": "query"
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/clouddevices": {
+          "description": "Manage your Weave"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "AclEntriesListResponse": {
+      "id": "AclEntriesListResponse",
+      "type": "object",
+      "description": "List of ACL entries.",
+      "externalTypeName": "clouddevices.api.AclEntriesListResponse",
+      "properties": {
+        "aclEntries": {
+          "type": "array",
+          "description": "The actual list of ACL entries.",
+          "items": {
+            "$ref": "AclEntry"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#aclEntriesListResponse\".",
+          "default": "clouddevices#aclEntriesListResponse"
+        }
+      }
+    },
+    "AclEntry": {
+      "id": "AclEntry",
+      "type": "object",
+      "externalTypeName": "clouddevices.AclEntry",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ACL entry ID."
+        },
+        "key": {
+          "type": "string",
+          "description": "Public access key value. Set only when scopeType is PUBLIC.",
+          "format": "int64"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#aclEntry\".",
+          "default": "clouddevices#aclEntry"
+        },
+        "pending": {
+          "type": "boolean",
+          "description": "Whether this ACL entry is pending for user reply to accept/reject it."
+        },
+        "role": {
+          "type": "string",
+          "description": "Access role granted to this scope.",
+          "enum": [
+            "manager",
+            "owner",
+            "robot",
+            "user",
+            "viewer"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        "scopeId": {
+          "type": "string",
+          "description": "Email address if scope type is user or group, domain name if scope type is a domain."
+        },
+        "scopeMembership": {
+          "type": "string",
+          "description": "Type of membership the user has in the scope.",
+          "enum": [
+            "manager",
+            "member",
+            "none"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ]
+        },
+        "scopeName": {
+          "type": "string",
+          "description": "Displayable scope name."
+        },
+        "scopePhotoUrl": {
+          "type": "string",
+          "description": "URL of this scope displayable photo."
+        },
+        "scopeType": {
+          "type": "string",
+          "description": "Type of the access scope.",
+          "enum": [
+            "domain",
+            "group",
+            "public",
+            "user"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      }
+    },
+    "Application": {
+      "id": "Application",
+      "type": "object",
+      "description": "Contains information about a recommended application for a device model.",
+      "externalTypeName": "clouddevices.Application",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "User readable application description."
+        },
+        "icon": {
+          "type": "string",
+          "description": "URL of application icon."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique application ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "User readable application name."
+        },
+        "type": {
+          "type": "string",
+          "description": "Application type.",
+          "enum": [
+            "android",
+            "chrome",
+            "web"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ]
+        }
+      }
+    },
+    "CloudDeviceChannel": {
+      "id": "CloudDeviceChannel",
+      "type": "object",
+      "description": "Description of notification mechanisms device supports.",
+      "externalTypeName": "clouddevices.CloudDeviceChannel",
+      "properties": {
+        "gcmRegistrationId": {
+          "type": "string",
+          "description": "GCM registration ID. Required if device supports GCM delivery channel."
+        },
+        "supportedType": {
+          "type": "string",
+          "description": "Channel type supported by device.",
+          "enum": [
+            "gcm",
+            "parent",
+            "xmpp"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
+          "annotations": {
+            "required": [
+              "clouddevices.registrationTickets.insert"
+            ]
+          }
+        }
+      }
+    },
+    "Command": {
+      "id": "Command",
+      "type": "object",
+      "externalTypeName": "clouddevices.Command",
+      "properties": {
+        "creationTimeMs": {
+          "type": "string",
+          "description": "Timestamp since epoch of a creation of a command.",
+          "format": "int64"
+        },
+        "deviceId": {
+          "type": "string",
+          "description": "Device ID that this command belongs to.",
+          "annotations": {
+            "required": [
+              "clouddevices.commands.insert"
+            ]
+          }
+        },
+        "error": {
+          "$ref": "CommandError",
+          "description": "Error descriptor."
+        },
+        "expirationTimeMs": {
+          "type": "string",
+          "description": "Timestamp since epoch of command expiration.",
+          "format": "int64"
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique command ID."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#command\".",
+          "default": "clouddevices#command"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full command name, including package."
+        },
+        "parameters": {
+          "$ref": "JsonObject",
+          "description": "Parameters list."
+        },
+        "pendingState": {
+          "type": "string",
+          "description": "Pending command state that is not acknowledged by the device yet.",
+          "enum": [
+            "aborted",
+            "cancelled",
+            "done",
+            "error",
+            "expired",
+            "inProgress",
+            "queued"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        "progress": {
+          "$ref": "JsonObject",
+          "description": "Command-specific progress descriptor."
+        },
+        "results": {
+          "$ref": "JsonObject",
+          "description": "Results list."
+        },
+        "state": {
+          "type": "string",
+          "description": "Current command state.",
+          "enum": [
+            "aborted",
+            "cancelled",
+            "done",
+            "error",
+            "expired",
+            "inProgress",
+            "queued"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      }
+    },
+    "CommandDefNew": {
+      "id": "CommandDefNew",
+      "type": "object",
+      "externalTypeName": "clouddevices.cdd.CommandDefNew",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#commandDefNew\".",
+          "default": "clouddevices#commandDefNew"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "JsonObject"
+          }
+        }
+      }
+    },
+    "CommandError": {
+      "id": "CommandError",
+      "type": "object",
+      "externalTypeName": "clouddevices.CommandError",
+      "properties": {
+        "arguments": {
+          "type": "array",
+          "description": "Positional error arguments used for error message formatting.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "code": {
+          "type": "string",
+          "description": "Error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "User-visible error message populated by the cloud based on command name and error code."
+        }
+      }
+    },
+    "CommandsListResponse": {
+      "id": "CommandsListResponse",
+      "type": "object",
+      "description": "List of commands.",
+      "externalTypeName": "clouddevices.api.CommandsListResponse",
+      "properties": {
+        "commands": {
+          "type": "array",
+          "description": "The actual list of commands.",
+          "items": {
+            "$ref": "Command"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#commandsListResponse\".",
+          "default": "clouddevices#commandsListResponse"
+        }
+      }
+    },
+    "Device": {
+      "id": "Device",
+      "type": "object",
+      "externalTypeName": "clouddevices.Device",
+      "properties": {
+        "channel": {
+          "$ref": "CloudDeviceChannel",
+          "description": "Device notification channel description."
+        },
+        "commandDefs": {
+          "type": "object",
+          "description": "Description of commands supported by the device.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "CommandDefNew"
+            }
+          }
+        },
+        "creationTimeMs": {
+          "type": "string",
+          "description": "Timestamp of creation of this device in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string",
+          "description": "User readable description of this device."
+        },
+        "deviceKind": {
+          "type": "string",
+          "description": "Device kind.",
+          "enum": [
+            "accessPoint",
+            "aggregator",
+            "camera",
+            "printer",
+            "scanner",
+            "storage",
+            "vendor",
+            "video"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "annotations": {
+            "required": [
+              "clouddevices.registrationTickets.insert"
+            ]
+          }
+        },
+        "displayName": {
+          "type": "string",
+          "description": "How the device should be named to user. System name should be used if this is empty."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique device ID."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#device\".",
+          "default": "clouddevices#device"
+        },
+        "lastSeenTimeMs": {
+          "type": "string",
+          "description": "Timestamp of the last request from this device in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "lastUpdateTimeMs": {
+          "type": "string",
+          "description": "Timestamp of the last device update in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "lastUseTimeMs": {
+          "type": "string",
+          "description": "Timestamp of the last device usage in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "owner": {
+          "type": "string",
+          "description": "E-mail address of the device owner."
+        },
+        "parentId": {
+          "type": "string",
+          "description": "Parent device ID (aggregator) if it exists."
+        },
+        "personalizedInfo": {
+          "$ref": "PersonalizedDeviceInfo",
+          "description": "Personalized device information for currently logged-in user."
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number of a device provided by its manufacturer."
+        },
+        "state": {
+          "$ref": "JsonObject",
+          "description": "Device state."
+        },
+        "systemName": {
+          "type": "string",
+          "description": "System name of this device provided by the manufacturer.",
+          "annotations": {
+            "required": [
+              "clouddevices.registrationTickets.insert"
+            ]
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "Custom free-form manufacturer tags.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DeviceStateHistoryFreeSpaceFieldHistory": {
+      "id": "DeviceStateHistoryFreeSpaceFieldHistory",
+      "type": "object",
+      "description": "Device state history of a specific field.",
+      "externalTypeName": "clouddevices.DeviceStateHistory.FreeSpaceFieldHistory",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "description": "Field history data.",
+          "items": {
+            "$ref": "DeviceStateHistoryFreeSpaceFieldHistoryEntry"
+          }
+        }
+      }
+    },
+    "DeviceStateHistoryFreeSpaceFieldHistoryEntry": {
+      "id": "DeviceStateHistoryFreeSpaceFieldHistoryEntry",
+      "type": "object",
+      "description": "Represents an item in state field history.",
+      "externalTypeName": "clouddevices.DeviceStateHistory.FreeSpaceFieldHistory.Entry",
+      "properties": {
+        "timeMs": {
+          "type": "string",
+          "description": "Timestamp of the field change.",
+          "format": "int64"
+        },
+        "value": {
+          "type": "string",
+          "description": "New value of the field.",
+          "format": "uint64"
+        }
+      }
+    },
+    "DeviceStateHistoryStorage": {
+      "id": "DeviceStateHistoryStorage",
+      "type": "object",
+      "description": "Storage device state history.",
+      "externalTypeName": "clouddevices.DeviceStateHistory.Storage",
+      "properties": {
+        "freeSpace": {
+          "$ref": "DeviceStateHistoryFreeSpaceFieldHistory",
+          "description": "History of the total free space on the device."
+        }
+      }
+    },
+    "DeviceStatePatchesStatePatch": {
+      "id": "DeviceStatePatchesStatePatch",
+      "type": "object",
+      "description": "Device state patch with corresponding timestamp.",
+      "externalTypeName": "clouddevices.DeviceStatePatches.StatePatch",
+      "properties": {
+        "patch": {
+          "$ref": "State",
+          "description": "State patch."
+        },
+        "timeMs": {
+          "type": "string",
+          "description": "Timestamp of a change. Local time, UNIX timestamp or time since last boot can be used.",
+          "format": "int64"
+        }
+      }
+    },
+    "DevicesGetStateHistoryResponse": {
+      "id": "DevicesGetStateHistoryResponse",
+      "type": "object",
+      "externalTypeName": "clouddevices.api.DevicesGetStateHistoryResponse",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#devicesGetStateHistoryResponse\".",
+          "default": "clouddevices#devicesGetStateHistoryResponse"
+        },
+        "storage": {
+          "$ref": "DeviceStateHistoryStorage",
+          "description": "Storage device state history."
+        }
+      }
+    },
+    "DevicesListResponse": {
+      "id": "DevicesListResponse",
+      "type": "object",
+      "description": "List of devices.",
+      "externalTypeName": "clouddevices.api.DevicesListResponse",
+      "properties": {
+        "devices": {
+          "type": "array",
+          "description": "The actual list of devices.",
+          "items": {
+            "$ref": "Device"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#devicesListResponse\".",
+          "default": "clouddevices#devicesListResponse"
+        }
+      }
+    },
+    "DevicesPatchStateRequest": {
+      "id": "DevicesPatchStateRequest",
+      "type": "object",
+      "externalTypeName": "clouddevices.api.DevicesPatchStateRequest",
+      "properties": {
+        "patches": {
+          "type": "array",
+          "description": "The list of state patches with corresponding timestamps.",
+          "items": {
+            "$ref": "DeviceStatePatchesStatePatch"
+          }
+        },
+        "requestTimeMs": {
+          "type": "string",
+          "description": "Timestamp of a request. Local time, UNIX timestamp or time since last boot can be used.",
+          "format": "int64"
+        }
+      }
+    },
+    "DevicesPatchStateResponse": {
+      "id": "DevicesPatchStateResponse",
+      "type": "object",
+      "externalTypeName": "clouddevices.api.DevicesPatchStateResponse",
+      "properties": {
+        "state": {
+          "$ref": "State",
+          "description": "Updated device state."
+        }
+      }
+    },
+    "Event": {
+      "id": "Event",
+      "type": "object",
+      "externalTypeName": "clouddevices.Event",
+      "properties": {
+        "deviceId": {
+          "type": "string",
+          "description": "The device that was affected by this event."
+        },
+        "id": {
+          "type": "string",
+          "description": "ID of the event."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#event\".",
+          "default": "clouddevices#event"
+        },
+        "statePatch": {
+          "$ref": "State"
+        },
+        "timeMs": {
+          "type": "string",
+          "description": "Time the event was generated in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the event.",
+          "enum": [
+            "commandCancelled",
+            "commandCreated",
+            "commandExpired",
+            "commandUpdated",
+            "deviceAclUpdated",
+            "deviceDeleted",
+            "deviceStateUpdated"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "User that caused the event (if applicable)."
+        }
+      }
+    },
+    "EventsListResponse": {
+      "id": "EventsListResponse",
+      "type": "object",
+      "description": "List of events.",
+      "externalTypeName": "clouddevices.api.EventsListResponse",
+      "properties": {
+        "events": {
+          "type": "array",
+          "description": "The actual list of events.",
+          "items": {
+            "$ref": "Event"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#eventsListResponse\".",
+          "default": "clouddevices#eventsListResponse"
+        }
+      }
+    },
+    "JsonObject": {
+      "id": "JsonObject",
+      "type": "object",
+      "description": "JSON object value.",
+      "additionalProperties": {
+        "$ref": "JsonValue"
+      }
+    },
+    "JsonValue": {
+      "id": "JsonValue",
+      "type": "any",
+      "description": "JSON value -- union over JSON value types."
+    },
+    "MediaValue": {
+      "id": "MediaValue",
+      "type": "object",
+      "description": "A value for some binary content. At most one of the fields should be set.",
+      "externalTypeName": "clouddevices.cdd.MediaValue",
+      "properties": {
+        "contentUrl": {
+          "type": "string",
+          "description": "URL of the external blob."
+        },
+        "value": {
+          "type": "string",
+          "description": "Inline blob.",
+          "format": "byte"
+        }
+      }
+    },
+    "ModelManifest": {
+      "id": "ModelManifest",
+      "type": "object",
+      "description": "Model manifest info.",
+      "externalTypeName": "clouddevices.ModelManifest",
+      "properties": {
+        "applications": {
+          "type": "array",
+          "description": "List of applications recommended to use with a device model.",
+          "items": {
+            "$ref": "Application"
+          }
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique model manifest ID."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#modelManifest\".",
+          "default": "clouddevices#modelManifest"
+        },
+        "modelDescription": {
+          "type": "string",
+          "description": "User readable device model description."
+        },
+        "modelIcon": {
+          "type": "string",
+          "description": "URL of device model icon."
+        },
+        "modelName": {
+          "type": "string",
+          "description": "User readable device model name."
+        },
+        "oemName": {
+          "type": "string",
+          "description": "User readable name of device model manufacturer."
+        }
+      }
+    },
+    "NamedValue": {
+      "id": "NamedValue",
+      "type": "object",
+      "description": "Exactly one of the values should be set.",
+      "externalTypeName": "clouddevices.cdd.NamedValue",
+      "properties": {
+        "intValue": {
+          "type": "string",
+          "description": "Integer value of the item.",
+          "format": "int64"
+        },
+        "mediaValue": {
+          "$ref": "MediaValue",
+          "description": "Media value for storing blobs."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the item."
+        },
+        "stringValue": {
+          "type": "string",
+          "description": "String value of the item."
+        }
+      }
+    },
+    "PersonalizedDeviceInfo": {
+      "id": "PersonalizedDeviceInfo",
+      "type": "object",
+      "description": "Personalized device information.",
+      "externalTypeName": "clouddevices.PersonalizedDeviceInfo",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "Personalized device display name."
+        },
+        "maxRole": {
+          "type": "string",
+          "description": "The maximum role on the device.",
+          "enum": [
+            "manager",
+            "owner",
+            "robot",
+            "user",
+            "viewer"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      }
+    },
+    "RegistrationTicket": {
+      "id": "RegistrationTicket",
+      "type": "object",
+      "externalTypeName": "clouddevices.RegistrationTicket",
+      "properties": {
+        "creationTimeMs": {
+          "type": "string",
+          "description": "Creation timestamp of the registration ticket in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "deviceDraft": {
+          "$ref": "Device",
+          "description": "Draft of the device being registered."
+        },
+        "deviceId": {
+          "type": "string",
+          "description": "ID that device will have after registration is successfully finished."
+        },
+        "expirationTimeMs": {
+          "type": "string",
+          "description": "Expiration timestamp of the registration ticket in milliseconds since epoch UTC.",
+          "format": "int64"
+        },
+        "id": {
+          "type": "string",
+          "description": "Registration ticket ID."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"clouddevices#registrationTicket\".",
+          "default": "clouddevices#registrationTicket"
+        },
+        "oauthClientId": {
+          "type": "string",
+          "description": "OAuth 2.0 client ID of the device."
+        },
+        "robotAccountAuthorizationCode": {
+          "type": "string",
+          "description": "Authorization code that can be exchanged to a refresh token."
+        },
+        "robotAccountEmail": {
+          "type": "string",
+          "description": "E-mail address of robot account assigned to the registered device."
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "Email address of the owner."
+        }
+      }
+    },
+    "State": {
+      "id": "State",
+      "type": "object",
+      "description": "Description of device state.",
+      "externalTypeName": "clouddevices.cdd.State",
+      "properties": {
+        "base": {
+          "$ref": "StateBase",
+          "description": "State common to all the types of the devices."
+        },
+        "storage": {
+          "$ref": "StateStorage",
+          "description": "Storage device state."
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the CDD."
+        }
+      }
+    },
+    "StateBase": {
+      "id": "StateBase",
+      "type": "object",
+      "description": "Description of device state applicable to all device types.",
+      "externalTypeName": "clouddevices.cdd.State.Base",
+      "properties": {
+        "connectionStatus": {
+          "type": "string",
+          "description": "Current connection status of the device.",
+          "enum": [
+            "offline",
+            "online",
+            "unknown"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ]
+        },
+        "vendorState": {
+          "$ref": "VendorState",
+          "description": "Vendor-specific state."
+        }
+      }
+    },
+    "StateStorage": {
+      "id": "StateStorage",
+      "type": "object",
+      "description": "Storage device state.",
+      "externalTypeName": "clouddevices.cdd.State.Storage",
+      "properties": {
+        "freeSpace": {
+          "type": "string",
+          "description": "Total free space on the device in bytes.",
+          "format": "uint64"
+        }
+      }
+    },
+    "VendorState": {
+      "id": "VendorState",
+      "type": "object",
+      "description": "Vendor-specific device state.",
+      "externalTypeName": "clouddevices.cdd.VendorState",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "State slots.",
+          "items": {
+            "$ref": "NamedValue"
+          }
+        }
+      }
+    }
+  },
+  "resources": {
+    "aclEntries": {
+      "methods": {
+        "delete": {
+          "id": "clouddevices.aclEntries.delete",
+          "path": "devices/{deviceId}/aclEntries/{aclEntryId}",
+          "httpMethod": "DELETE",
+          "description": "Deletes an ACL entry.",
+          "parameters": {
+            "aclEntryId": {
+              "type": "string",
+              "description": "Unique ACL entry ID.",
+              "required": true,
+              "location": "path"
+            },
+            "deviceId": {
+              "type": "string",
+              "description": "ID of the device to use.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId",
+            "aclEntryId"
+          ],
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "insert": {
+          "id": "clouddevices.aclEntries.insert",
+          "path": "devices/{deviceId}/aclEntries",
+          "httpMethod": "POST",
+          "description": "Inserts a new ACL entry.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "ID of the device to use.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "request": {
+            "$ref": "AclEntry"
+          },
+          "response": {
+            "$ref": "AclEntry"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "list": {
+          "id": "clouddevices.aclEntries.list",
+          "path": "devices/{deviceId}/aclEntries",
+          "httpMethod": "GET",
+          "description": "Lists ACL entries.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "ID of the device to use.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "response": {
+            "$ref": "AclEntriesListResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        }
+      }
+    },
+    "commands": {
+      "methods": {
+        "cancel": {
+          "id": "clouddevices.commands.cancel",
+          "path": "commands/{commandId}/cancel",
+          "httpMethod": "POST",
+          "description": "Cancels a command.",
+          "parameters": {
+            "commandId": {
+              "type": "string",
+              "description": "Command ID.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "commandId"
+          ],
+          "response": {
+            "$ref": "Command"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "get": {
+          "id": "clouddevices.commands.get",
+          "path": "commands/{commandId}",
+          "httpMethod": "GET",
+          "description": "Returns a particular command.",
+          "parameters": {
+            "attachmentPath": {
+              "type": "string",
+              "description": "Path to the blob inside the command, for now only two values are supported: \"parameters\" and \"results\".",
+              "location": "query"
+            },
+            "commandId": {
+              "type": "string",
+              "description": "Unique command ID.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "commandId"
+          ],
+          "response": {
+            "$ref": "Command"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ],
+          "supportsMediaDownload": true
+        },
+        "insert": {
+          "id": "clouddevices.commands.insert",
+          "path": "commands",
+          "httpMethod": "POST",
+          "description": "Creates and sends a new command.",
+          "parameters": {
+            "expireInMs": {
+              "type": "string",
+              "description": "Number of milliseconds since now before the command expires. Expired command should not be executed by device.",
+              "default": "2592000000",
+              "format": "uint64",
+              "minimum": "10000",
+              "maximum": "2592000000",
+              "location": "query"
+            },
+            "responseAwaitMs": {
+              "type": "string",
+              "description": "Number of milliseconds to wait for device response before returning.",
+              "format": "uint64",
+              "maximum": "25000",
+              "location": "query"
+            }
+          },
+          "request": {
+            "$ref": "Command"
+          },
+          "response": {
+            "$ref": "Command"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ],
+          "supportsMediaUpload": true,
+          "mediaUpload": {
+            "accept": [
+              "*/*"
+            ],
+            "maxSize": "2GB",
+            "protocols": {
+              "simple": {
+                "multipart": true,
+                "path": "/upload/clouddevices/v1/commands"
+              },
+              "resumable": {
+                "multipart": true,
+                "path": "/resumable/upload/clouddevices/v1/commands"
+              }
+            }
+          }
+        },
+        "list": {
+          "id": "clouddevices.commands.list",
+          "path": "commands",
+          "httpMethod": "GET",
+          "description": "Lists all commands in order of creation.",
+          "parameters": {
+            "byUser": {
+              "type": "string",
+              "description": "List all the commands issued by the user. Special value 'me' can be used to list by the current user.",
+              "location": "query"
+            },
+            "deviceId": {
+              "type": "string",
+              "description": "Device ID.",
+              "required": true,
+              "location": "query"
+            },
+            "state": {
+              "type": "string",
+              "description": "Command state.",
+              "enum": [
+                "aborted",
+                "cancelled",
+                "done",
+                "error",
+                "expired",
+                "inProgress",
+                "queued"
+              ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "response": {
+            "$ref": "CommandsListResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "patch": {
+          "id": "clouddevices.commands.patch",
+          "path": "commands/{commandId}",
+          "httpMethod": "PATCH",
+          "description": "Updates a command. This method supports patch semantics.",
+          "parameters": {
+            "commandId": {
+              "type": "string",
+              "description": "Unique command ID.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "commandId"
+          ],
+          "request": {
+            "$ref": "Command"
+          },
+          "response": {
+            "$ref": "Command"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "update": {
+          "id": "clouddevices.commands.update",
+          "path": "commands/{commandId}",
+          "httpMethod": "PUT",
+          "description": "Updates a command.",
+          "parameters": {
+            "commandId": {
+              "type": "string",
+              "description": "Unique command ID.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "commandId"
+          ],
+          "request": {
+            "$ref": "Command"
+          },
+          "response": {
+            "$ref": "Command"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ],
+          "supportsMediaUpload": true,
+          "mediaUpload": {
+            "accept": [
+              "*/*"
+            ],
+            "maxSize": "2GB",
+            "protocols": {
+              "simple": {
+                "multipart": true,
+                "path": "/upload/clouddevices/v1/commands/{commandId}"
+              },
+              "resumable": {
+                "multipart": true,
+                "path": "/resumable/upload/clouddevices/v1/commands/{commandId}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "devices": {
+      "methods": {
+        "delete": {
+          "id": "clouddevices.devices.delete",
+          "path": "devices/{deviceId}",
+          "httpMethod": "DELETE",
+          "description": "Deletes a device from the system.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Unique ID of the device.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "get": {
+          "id": "clouddevices.devices.get",
+          "path": "devices/{deviceId}",
+          "httpMethod": "GET",
+          "description": "Returns a particular device data.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Unique ID of the device.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "response": {
+            "$ref": "Device"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "getStateHistory": {
+          "id": "clouddevices.devices.getStateHistory",
+          "path": "devices/{deviceId}/getStateHistory",
+          "httpMethod": "POST",
+          "description": "Returns the history of the device state.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Device ID.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "response": {
+            "$ref": "DevicesGetStateHistoryResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "list": {
+          "id": "clouddevices.devices.list",
+          "path": "devices",
+          "httpMethod": "GET",
+          "description": "Lists devices user has access to.",
+          "parameters": {
+            "descriptionSubstring": {
+              "type": "string",
+              "description": "Device description.",
+              "location": "query"
+            },
+            "deviceKind": {
+              "type": "string",
+              "description": "Device kind.",
+              "enum": [
+                "accessPoint",
+                "aggregator",
+                "camera",
+                "printer",
+                "scanner",
+                "storage",
+                "vendor",
+                "video"
+              ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query"
+            },
+            "displayNameSubstring": {
+              "type": "string",
+              "description": "Device display name.",
+              "location": "query"
+            },
+            "role": {
+              "type": "string",
+              "description": "Access role to the device.",
+              "enum": [
+                "manager",
+                "owner",
+                "robot",
+                "user",
+                "viewer"
+              ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query"
+            },
+            "systemNameSubstring": {
+              "type": "string",
+              "description": "Device system name.",
+              "location": "query"
+            }
+          },
+          "response": {
+            "$ref": "DevicesListResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "patch": {
+          "id": "clouddevices.devices.patch",
+          "path": "devices/{deviceId}",
+          "httpMethod": "PATCH",
+          "description": "Updates a device data. This method supports patch semantics.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Unique ID of the device.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "request": {
+            "$ref": "Device"
+          },
+          "response": {
+            "$ref": "Device"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "patchState": {
+          "id": "clouddevices.devices.patchState",
+          "path": "devices/{deviceId}/patchState",
+          "httpMethod": "POST",
+          "description": "Applies provided patches to the device state.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Device id.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "request": {
+            "$ref": "DevicesPatchStateRequest"
+          },
+          "response": {
+            "$ref": "DevicesPatchStateResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "update": {
+          "id": "clouddevices.devices.update",
+          "path": "devices/{deviceId}",
+          "httpMethod": "PUT",
+          "description": "Updates a device data.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Unique ID of the device.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "deviceId"
+          ],
+          "request": {
+            "$ref": "Device"
+          },
+          "response": {
+            "$ref": "Device"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        }
+      }
+    },
+    "events": {
+      "methods": {
+        "list": {
+          "id": "clouddevices.events.list",
+          "path": "events",
+          "httpMethod": "GET",
+          "description": "Lists events.",
+          "parameters": {
+            "deviceId": {
+              "type": "string",
+              "description": "Sending or affected device id.",
+              "repeated": true,
+              "location": "query"
+            },
+            "endTimeMs": {
+              "type": "string",
+              "description": "End of time range in ms since epoch.",
+              "format": "int64",
+              "location": "query"
+            },
+            "startTimeMs": {
+              "type": "string",
+              "description": "Start of time range in ms since epoch.",
+              "format": "int64",
+              "location": "query"
+            }
+          },
+          "response": {
+            "$ref": "EventsListResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        }
+      }
+    },
+    "modelManifests": {
+      "methods": {
+        "get": {
+          "id": "clouddevices.modelManifests.get",
+          "path": "modelManifests/{modelManifestId}",
+          "httpMethod": "GET",
+          "description": "Returns a particular model manifest.",
+          "parameters": {
+            "modelManifestId": {
+              "type": "string",
+              "description": "Unique ID of the model manifest.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "modelManifestId"
+          ],
+          "response": {
+            "$ref": "ModelManifest"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        }
+      }
+    },
+    "registrationTickets": {
+      "methods": {
+        "finalize": {
+          "id": "clouddevices.registrationTickets.finalize",
+          "path": "registrationTickets/{registrationTicketId}/finalize",
+          "httpMethod": "POST",
+          "description": "Finalizes device registration and returns its credentials.",
+          "parameters": {
+            "registrationTicketId": {
+              "type": "string",
+              "description": "ID of the registration ticket to finalize.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "registrationTicketId"
+          ],
+          "response": {
+            "$ref": "RegistrationTicket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "get": {
+          "id": "clouddevices.registrationTickets.get",
+          "path": "registrationTickets/{registrationTicketId}",
+          "httpMethod": "GET",
+          "description": "Returns an existing registration ticket.",
+          "parameters": {
+            "registrationTicketId": {
+              "type": "string",
+              "description": "Unique ID of the registration ticket.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "registrationTicketId"
+          ],
+          "response": {
+            "$ref": "RegistrationTicket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "insert": {
+          "id": "clouddevices.registrationTickets.insert",
+          "path": "registrationTickets",
+          "httpMethod": "POST",
+          "description": "Creates a new registration ticket.",
+          "request": {
+            "$ref": "RegistrationTicket"
+          },
+          "response": {
+            "$ref": "RegistrationTicket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "patch": {
+          "id": "clouddevices.registrationTickets.patch",
+          "path": "registrationTickets/{registrationTicketId}",
+          "httpMethod": "PATCH",
+          "description": "Updates an existing registration ticket. This method supports patch semantics.",
+          "parameters": {
+            "registrationTicketId": {
+              "type": "string",
+              "description": "Unique ID of the registration ticket.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "registrationTicketId"
+          ],
+          "request": {
+            "$ref": "RegistrationTicket"
+          },
+          "response": {
+            "$ref": "RegistrationTicket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        },
+        "update": {
+          "id": "clouddevices.registrationTickets.update",
+          "path": "registrationTickets/{registrationTicketId}",
+          "httpMethod": "PUT",
+          "description": "Updates an existing registration ticket.",
+          "parameters": {
+            "registrationTicketId": {
+              "type": "string",
+              "description": "Unique ID of the registration ticket.",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "registrationTicketId"
+          ],
+          "request": {
+            "$ref": "RegistrationTicket"
+          },
+          "response": {
+            "$ref": "RegistrationTicket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/clouddevices"
+          ]
+        }
+      }
+    }
+  }
+}

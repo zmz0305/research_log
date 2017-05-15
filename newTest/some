@@ -1,0 +1,552 @@
+Namespace(param='devices')
+
+{
+  "devices": [
+    {
+      "components": {
+        "colorMode": {
+          "traits": [
+            {
+              "trait": "colorMode"
+            }
+          ]
+        }, 
+        "colorTemp": {
+          "traits": [
+            {
+              "trait": "colorTemp"
+            }
+          ]
+        }, 
+        "colorXy": {
+          "traits": [
+            {
+              "trait": "colorXy"
+            }
+          ]
+        }, 
+        "dimmer": {
+          "traits": [
+            {
+              "trait": "brightness"
+            }
+          ]
+        }, 
+        "powerSwitch": {
+          "traits": [
+            {
+              "trait": "onOff"
+            }
+          ]
+        }
+      }, 
+      "connectionStatus": "OFFLINE", 
+      "createTime": "2017-04-13T04:24:51.314Z", 
+      "deviceKind": "LIGHT", 
+      "firmwareVersion": "My Lock, libiota 2.0.0-rc-1", 
+      "interfaceVersion": "0", 
+      "lastSeenTime": "2017-04-17T06:11:02.547Z", 
+      "lastUpdateTime": "2017-04-17T06:11:02.213Z", 
+      "lastUseTime": "2017-04-13T04:24:51Z", 
+      "modelManifestId": "AIAAA", 
+      "modelName": "Unregistered Model", 
+      "name": "devices/0-0b83a7d3-6bd7-42b6-ac83-7d4ac47aa3cc", 
+      "oemName": "Unregistered Manufacturer", 
+      "serialNumber": "1.0.0", 
+      "state": {
+        "lock": {
+          "state": {
+            "lock": {
+              "lockedState": "locked"
+            }
+          }
+        }, 
+        "powerSwitch": {
+          "state": {
+            "onOff": {
+              "state": "on"
+            }
+          }
+        }, 
+        "temp_unit_setting": {
+          "state": {
+            "tempUnitsSetting": {
+              "units": "celsius"
+            }
+          }
+        }
+      }, 
+      "traits": {
+        "brightness": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "brightness": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "brightness": {
+              "isRequired": true, 
+              "maximum": 1, 
+              "minimum": 0, 
+              "type": "number"
+            }
+          }
+        }, 
+        "colorMode": {
+          "state": {
+            "mode": {
+              "enum": [
+                "colorXy", 
+                "colorTemp"
+              ], 
+              "type": "string"
+            }
+          }
+        }, 
+        "colorTemp": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "colorTemp": {
+                  "type": "integer"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "colorTemp": {
+              "isRequired": true, 
+              "type": "integer"
+            }, 
+            "maxColorTemp": {
+              "isRequired": true, 
+              "type": "integer"
+            }, 
+            "minColorTemp": {
+              "isRequired": true, 
+              "type": "integer"
+            }
+          }
+        }, 
+        "colorXy": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "colorSetting": {
+                  "additionalProperties": false, 
+                  "properties": {
+                    "colorX": {
+                      "maximum": 1, 
+                      "minimum": 0, 
+                      "type": "number"
+                    }, 
+                    "colorY": {
+                      "maximum": 1, 
+                      "minimum": 0, 
+                      "type": "number"
+                    }
+                  }, 
+                  "required": [
+                    "colorX", 
+                    "colorY"
+                  ], 
+                  "type": "object"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "colorCapBlue": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }, 
+            "colorCapGreen": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }, 
+            "colorCapRed": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }, 
+            "colorSetting": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }
+          }
+        }, 
+        "onOff": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "state": {
+                  "enum": [
+                    "on", 
+                    "off"
+                  ], 
+                  "type": "string"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "state": {
+              "enum": [
+                "on", 
+                "off"
+              ], 
+              "isRequired": true, 
+              "type": "string"
+            }
+          }
+        }
+      }
+    }, 
+    {
+      "components": {
+        "colorMode": {
+          "traits": [
+            {
+              "trait": "colorMode"
+            }
+          ]
+        }, 
+        "colorTemp": {
+          "traits": [
+            {
+              "trait": "colorTemp"
+            }
+          ]
+        }, 
+        "colorXy": {
+          "traits": [
+            {
+              "trait": "colorXy"
+            }
+          ]
+        }, 
+        "dimmer": {
+          "traits": [
+            {
+              "trait": "brightness"
+            }
+          ]
+        }, 
+        "powerSwitch": {
+          "traits": [
+            {
+              "trait": "onOff"
+            }
+          ]
+        }
+      }, 
+      "connectionStatus": "OFFLINE", 
+      "createTime": "2017-04-10T19:36:28.136Z", 
+      "deviceKind": "LIGHT", 
+      "firmwareVersion": "My Lock, libiota 2.0.0-rc-1", 
+      "interfaceVersion": "0", 
+      "lastSeenTime": "2017-04-10T19:36:29.378Z", 
+      "lastUpdateTime": "2017-04-10T19:36:29.219Z", 
+      "lastUseTime": "2017-04-10T19:36:28Z", 
+      "modelManifestId": "AIAAA", 
+      "modelName": "Unregistered Model", 
+      "name": "devices/0-18982381-573f-495b-b229-03aa6c9743d9", 
+      "oemName": "Unregistered Manufacturer", 
+      "serialNumber": "1.0.0", 
+      "state": {
+        "lock": {
+          "state": {
+            "lock": {
+              "lockedState": "locked"
+            }
+          }
+        }, 
+        "powerSwitch": {
+          "state": {
+            "onOff": {
+              "state": "on"
+            }
+          }
+        }, 
+        "temp_unit_setting": {
+          "state": {
+            "tempUnitsSetting": {
+              "units": "celsius"
+            }
+          }
+        }
+      }, 
+      "traits": {
+        "brightness": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "brightness": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "brightness": {
+              "isRequired": true, 
+              "maximum": 1, 
+              "minimum": 0, 
+              "type": "number"
+            }
+          }
+        }, 
+        "colorMode": {
+          "state": {
+            "mode": {
+              "enum": [
+                "colorXy", 
+                "colorTemp"
+              ], 
+              "type": "string"
+            }
+          }
+        }, 
+        "colorTemp": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "colorTemp": {
+                  "type": "integer"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "colorTemp": {
+              "isRequired": true, 
+              "type": "integer"
+            }, 
+            "maxColorTemp": {
+              "isRequired": true, 
+              "type": "integer"
+            }, 
+            "minColorTemp": {
+              "isRequired": true, 
+              "type": "integer"
+            }
+          }
+        }, 
+        "colorXy": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "colorSetting": {
+                  "additionalProperties": false, 
+                  "properties": {
+                    "colorX": {
+                      "maximum": 1, 
+                      "minimum": 0, 
+                      "type": "number"
+                    }, 
+                    "colorY": {
+                      "maximum": 1, 
+                      "minimum": 0, 
+                      "type": "number"
+                    }
+                  }, 
+                  "required": [
+                    "colorX", 
+                    "colorY"
+                  ], 
+                  "type": "object"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "colorCapBlue": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }, 
+            "colorCapGreen": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }, 
+            "colorCapRed": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }, 
+            "colorSetting": {
+              "additionalProperties": false, 
+              "isRequired": true, 
+              "properties": {
+                "colorX": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }, 
+                "colorY": {
+                  "maximum": 1, 
+                  "minimum": 0, 
+                  "type": "number"
+                }
+              }, 
+              "required": [
+                "colorX", 
+                "colorY"
+              ], 
+              "type": "object"
+            }
+          }
+        }, 
+        "onOff": {
+          "commands": {
+            "setConfig": {
+              "parameters": {
+                "state": {
+                  "enum": [
+                    "on", 
+                    "off"
+                  ], 
+                  "type": "string"
+                }
+              }
+            }
+          }, 
+          "state": {
+            "state": {
+              "enum": [
+                "on", 
+                "off"
+              ], 
+              "isRequired": true, 
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

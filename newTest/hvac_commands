@@ -1,0 +1,37 @@
+coolSetting/tempSetting.setConfig:
+{'parameters': {'degreesCelsius': {'type': 'number'}}}
+
+coolSubsystem/hvacSubsystemController.setConfig:
+{'parameters': {'controllerMode': {'enum': ['disabled',
+                                            'alwaysOn',
+                                            'auto'],
+                                   'type': 'string'}}}
+
+displayUnits/tempUnitsSetting.setConfig:
+{'parameters': {'units': {'enum': ['fahrenheit', 'celsius'],
+                          'type': 'string'}}}
+
+fanSubsystem/hvacSubsystemController.setConfig:
+{'parameters': {'controllerMode': {'enum': ['disabled',
+                                            'alwaysOn',
+                                            'auto'],
+                                   'type': 'string'}}}
+
+heatCoolSetting/tempRangeSetting.setConfig:
+{'parameters': {'highSetPointC': {'type': 'number'},
+                'lowSetPointC': {'type': 'number'}}}
+
+heatCoolSubsystem/hvacSubsystemController.setConfig:
+{'parameters': {'controllerMode': {'enum': ['disabled',
+                                            'alwaysOn',
+                                            'auto'],
+                                   'type': 'string'}}}
+
+heatSetting/tempSetting.setConfig:
+{'parameters': {'degreesCelsius': {'type': 'number'}}}
+
+heatSubsystem/hvacSubsystemController.setConfig:
+{'parameters': {'controllerMode': {'enum': ['disabled',
+                                            'alwaysOn',
+                                            'auto'],
+                                   'type': 'string'}}}
