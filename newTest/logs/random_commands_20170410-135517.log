@@ -1,4 +1,0 @@
-INFO:googleapiclient.discovery:URL being requested: POST https://weavecompanion.googleapis.com/v1/devices:provision?alt=json
-INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
-INFO:oauth2client.client:Refreshing access_token
-WARNING:googleapiclient.http:Encountered 403 Forbidden with reason "forbidden"

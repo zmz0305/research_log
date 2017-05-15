@@ -1,2 +1,0 @@
-INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/weave/v1/registrationTickets?alt=json
-INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/weave/v1/devices/5fa97ad5-619a-71c5-8c8f-0a4d3afa57b1?alt=json

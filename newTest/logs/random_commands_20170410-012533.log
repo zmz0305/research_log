@@ -1,2 +1,0 @@
-INFO:googleapiclient.discovery:URL being requested: POST https://weavecompanion.googleapis.com/v1/devices:provision?alt=json
-WARNING:googleapiclient.http:Encountered 403 Forbidden with reason "forbidden"
